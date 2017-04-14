@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="542d077db02341a198e8ab5baeb3c87f" Name="Diagram1">
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.agency" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.application" Width="1.5" PointX="0.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.application_agency" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.category" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.category_location" Width="1.5" PointX="7.5" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.category_news" Width="1.5" PointX="10.5" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.category_service" Width="1.5" PointX="7.5" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.language" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.location" Width="1.5" PointX="6" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.news" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.service" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.service_icon" Width="1.5" PointX="8.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITS_MobileNewsModel.sub_category" Width="1.5" PointX="5.25" PointY="31" IsExpanded="true" />
+        <AssociationConnector Association="ITS_MobileNewsModel.category_agency" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.location_agency" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.news_agency" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship18" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship31" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship30" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship15" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship19" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship21" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.sub_category_category" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship20" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship23" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship22" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship24" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship16" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship17" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship25" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship26" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship27" ManuallyRouted="false" />
+        <AssociationConnector Association="ITS_MobileNewsModel.Relationship33" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

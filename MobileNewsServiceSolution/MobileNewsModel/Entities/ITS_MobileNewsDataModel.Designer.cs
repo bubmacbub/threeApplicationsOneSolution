@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\workspace\OFA\MobileNewsForOFA\MobileNewsModel\Entities\ITS_MobileNewsDataModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\mjordan\Source\Repos\MobileOFANewsService\MobileNewsServiceSolution\MobileNewsModel\Entities\ITS_MobileNewsDataModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

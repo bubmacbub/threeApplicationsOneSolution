@@ -18,8 +18,6 @@ namespace MobileNewsModel.Entities
         public ITS_MobileNewsEntities()
             : base("name=ITS_MobileNewsEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
-            this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

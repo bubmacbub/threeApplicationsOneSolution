@@ -1,0 +1,1257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ITS_MobileNewsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="agency">
+          <Key>
+            <PropertyRef Name="agency_id" />
+          </Key>
+          <Property Name="agency_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="agency_name" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="application">
+          <Key>
+            <PropertyRef Name="application_id" />
+          </Key>
+          <Property Name="application_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="application_name" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="mobile_app_id" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="version" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="application_agency">
+          <Key>
+            <PropertyRef Name="application_agency_id" />
+          </Key>
+          <Property Name="application_agency_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="application_id" Type="int" Nullable="false" />
+          <Property Name="agency_id" Type="int" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="agency_id" Type="int" Nullable="false" />
+          <Property Name="category_name" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="category_location">
+          <Key>
+            <PropertyRef Name="category_location_id" />
+          </Key>
+          <Property Name="category_location_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="location_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="sub_category_id" Type="int" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="category_news">
+          <Key>
+            <PropertyRef Name="category_news_id" />
+          </Key>
+          <Property Name="category_news_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="news_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="sub_category_id" Type="int" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="category_service">
+          <Key>
+            <PropertyRef Name="category_service_id" />
+          </Key>
+          <Property Name="category_service_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="service_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="sub_category_id" Type="int" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="language">
+          <Key>
+            <PropertyRef Name="language_id" />
+          </Key>
+          <Property Name="language_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="language_short" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="language_name" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="agency_id" Type="int" />
+          <Property Name="language_id" Type="int" Nullable="false" />
+          <Property Name="location_name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="256" />
+          <Property Name="city" Type="varchar" MaxLength="100" />
+          <Property Name="state" Type="char" MaxLength="2" />
+          <Property Name="zip" Type="varchar" MaxLength="15" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="longitude" Type="float" />
+          <Property Name="website" Type="varchar(max)" />
+          <Property Name="phone" Type="varchar" MaxLength="256" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="comment" Type="text" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="news_id" />
+          </Key>
+          <Property Name="news_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="agency_id" Type="int" Nullable="false" />
+          <Property Name="language_id" Type="int" Nullable="false" />
+          <Property Name="news_title" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="news_content" Type="text" Nullable="false" />
+          <Property Name="news_image" Type="varbinary(max)" />
+          <Property Name="publish_date" Type="datetime" />
+          <Property Name="archive_flag" Type="char" MaxLength="1" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="service">
+          <Key>
+            <PropertyRef Name="service_id" />
+          </Key>
+          <Property Name="service_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="agency_id" Type="int" />
+          <Property Name="language_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="120" />
+          <Property Name="service_content" Type="text" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="service_icon">
+          <Key>
+            <PropertyRef Name="service_icon_id" />
+          </Key>
+          <Property Name="service_icon_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="service_id" Type="int" Nullable="false" />
+          <Property Name="service_image" Type="varbinary(max)" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sub_category">
+          <Key>
+            <PropertyRef Name="sub_category_id" />
+          </Key>
+          <Property Name="sub_category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="sub_category_name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" Nullable="false" />
+          <Property Name="logical_delete_date" Type="datetime" />
+        </EntityType>
+        <Association Name="category_agency">
+          <End Role="agency" Type="Self.agency" Multiplicity="1" />
+          <End Role="category" Type="Self.category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agency">
+              <PropertyRef Name="agency_id" />
+            </Principal>
+            <Dependent Role="category">
+              <PropertyRef Name="agency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="location_agency">
+          <End Role="agency" Type="Self.agency" Multiplicity="0..1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agency">
+              <PropertyRef Name="agency_id" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="agency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="news_agency">
+          <End Role="agency" Type="Self.agency" Multiplicity="1" />
+          <End Role="news" Type="Self.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agency">
+              <PropertyRef Name="agency_id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="agency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship15">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="category_service" Type="Self.category_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="category_service">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship16">
+          <End Role="sub_category" Type="Self.sub_category" Multiplicity="0..1" />
+          <End Role="category_service" Type="Self.category_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_category">
+              <PropertyRef Name="sub_category_id" />
+            </Principal>
+            <Dependent Role="category_service">
+              <PropertyRef Name="sub_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship17">
+          <End Role="service" Type="Self.service" Multiplicity="1" />
+          <End Role="category_service" Type="Self.category_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="category_service">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship18">
+          <End Role="agency" Type="Self.agency" Multiplicity="0..1" />
+          <End Role="service" Type="Self.service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agency">
+              <PropertyRef Name="agency_id" />
+            </Principal>
+            <Dependent Role="service">
+              <PropertyRef Name="agency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship19">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="category_location" Type="Self.category_location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="category_location">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship20">
+          <End Role="sub_category" Type="Self.sub_category" Multiplicity="0..1" />
+          <End Role="category_location" Type="Self.category_location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_category">
+              <PropertyRef Name="sub_category_id" />
+            </Principal>
+            <Dependent Role="category_location">
+              <PropertyRef Name="sub_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship21">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="category_news" Type="Self.category_news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="category_news">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship22">
+          <End Role="sub_category" Type="Self.sub_category" Multiplicity="0..1" />
+          <End Role="category_news" Type="Self.category_news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_category">
+              <PropertyRef Name="sub_category_id" />
+            </Principal>
+            <Dependent Role="category_news">
+              <PropertyRef Name="sub_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship23">
+          <End Role="location" Type="Self.location" Multiplicity="1" />
+          <End Role="category_location" Type="Self.category_location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="location">
+              <PropertyRef Name="location_id" />
+            </Principal>
+            <Dependent Role="category_location">
+              <PropertyRef Name="location_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship24">
+          <End Role="news" Type="Self.news" Multiplicity="1" />
+          <End Role="category_news" Type="Self.category_news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="news">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="category_news">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship25">
+          <End Role="language" Type="Self.language" Multiplicity="1" />
+          <End Role="news" Type="Self.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="language_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship26">
+          <End Role="language" Type="Self.language" Multiplicity="1" />
+          <End Role="service" Type="Self.service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="service">
+              <PropertyRef Name="language_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship27">
+          <End Role="language" Type="Self.language" Multiplicity="1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="language_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship30">
+          <End Role="application" Type="Self.application" Multiplicity="1" />
+          <End Role="application_agency" Type="Self.application_agency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="application">
+              <PropertyRef Name="application_id" />
+            </Principal>
+            <Dependent Role="application_agency">
+              <PropertyRef Name="application_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship31">
+          <End Role="agency" Type="Self.agency" Multiplicity="1" />
+          <End Role="application_agency" Type="Self.application_agency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agency">
+              <PropertyRef Name="agency_id" />
+            </Principal>
+            <Dependent Role="application_agency">
+              <PropertyRef Name="agency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship33">
+          <End Role="service" Type="Self.service" Multiplicity="1" />
+          <End Role="service_icon" Type="Self.service_icon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="service_icon">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="sub_category_category">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="sub_category" Type="Self.sub_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="sub_category">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ITS_MobileNewsModelStoreContainer">
+          <EntitySet Name="agency" EntityType="Self.agency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="application" EntityType="Self.application" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="application_agency" EntityType="Self.application_agency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category_location" EntityType="Self.category_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category_news" EntityType="Self.category_news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category_service" EntityType="Self.category_service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="language" EntityType="Self.language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="location" EntityType="Self.location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="news" EntityType="Self.news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="service" EntityType="Self.service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="service_icon" EntityType="Self.service_icon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sub_category" EntityType="Self.sub_category" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="category_agency" Association="Self.category_agency">
+            <End Role="agency" EntitySet="agency" />
+            <End Role="category" EntitySet="category" />
+          </AssociationSet>
+          <AssociationSet Name="location_agency" Association="Self.location_agency">
+            <End Role="agency" EntitySet="agency" />
+            <End Role="location" EntitySet="location" />
+          </AssociationSet>
+          <AssociationSet Name="news_agency" Association="Self.news_agency">
+            <End Role="agency" EntitySet="agency" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship15" Association="Self.Relationship15">
+            <End Role="category" EntitySet="category" />
+            <End Role="category_service" EntitySet="category_service" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship16" Association="Self.Relationship16">
+            <End Role="sub_category" EntitySet="sub_category" />
+            <End Role="category_service" EntitySet="category_service" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship17" Association="Self.Relationship17">
+            <End Role="service" EntitySet="service" />
+            <End Role="category_service" EntitySet="category_service" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship18" Association="Self.Relationship18">
+            <End Role="agency" EntitySet="agency" />
+            <End Role="service" EntitySet="service" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship19" Association="Self.Relationship19">
+            <End Role="category" EntitySet="category" />
+            <End Role="category_location" EntitySet="category_location" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship20" Association="Self.Relationship20">
+            <End Role="sub_category" EntitySet="sub_category" />
+            <End Role="category_location" EntitySet="category_location" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship21" Association="Self.Relationship21">
+            <End Role="category" EntitySet="category" />
+            <End Role="category_news" EntitySet="category_news" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship22" Association="Self.Relationship22">
+            <End Role="sub_category" EntitySet="sub_category" />
+            <End Role="category_news" EntitySet="category_news" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship23" Association="Self.Relationship23">
+            <End Role="location" EntitySet="location" />
+            <End Role="category_location" EntitySet="category_location" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship24" Association="Self.Relationship24">
+            <End Role="news" EntitySet="news" />
+            <End Role="category_news" EntitySet="category_news" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship25" Association="Self.Relationship25">
+            <End Role="language" EntitySet="language" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship26" Association="Self.Relationship26">
+            <End Role="language" EntitySet="language" />
+            <End Role="service" EntitySet="service" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship27" Association="Self.Relationship27">
+            <End Role="language" EntitySet="language" />
+            <End Role="location" EntitySet="location" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship30" Association="Self.Relationship30">
+            <End Role="application" EntitySet="application" />
+            <End Role="application_agency" EntitySet="application_agency" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship31" Association="Self.Relationship31">
+            <End Role="agency" EntitySet="agency" />
+            <End Role="application_agency" EntitySet="application_agency" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship33" Association="Self.Relationship33">
+            <End Role="service" EntitySet="service" />
+            <End Role="service_icon" EntitySet="service_icon" />
+          </AssociationSet>
+          <AssociationSet Name="sub_category_category" Association="Self.sub_category_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="sub_category" EntitySet="sub_category" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ITS_MobileNewsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="agency">
+          <Key>
+            <PropertyRef Name="agency_id" />
+          </Key>
+          <Property Name="agency_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="agency_name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="categories" Relationship="Self.category_agency" FromRole="agency" ToRole="category" />
+          <NavigationProperty Name="locations" Relationship="Self.location_agency" FromRole="agency" ToRole="location" />
+          <NavigationProperty Name="news" Relationship="Self.news_agency" FromRole="agency" ToRole="news" />
+          <NavigationProperty Name="services" Relationship="Self.Relationship18" FromRole="agency" ToRole="service" />
+          <NavigationProperty Name="application_agency" Relationship="Self.Relationship31" FromRole="agency" ToRole="application_agency" />
+        </EntityType>
+        <EntityType Name="application">
+          <Key>
+            <PropertyRef Name="application_id" />
+          </Key>
+          <Property Name="application_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="application_name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mobile_app_id" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="version" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="application_agency" Relationship="Self.Relationship30" FromRole="application" ToRole="application_agency" />
+        </EntityType>
+        <EntityType Name="application_agency">
+          <Key>
+            <PropertyRef Name="application_agency_id" />
+          </Key>
+          <Property Name="application_agency_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="application_id" Type="Int32" Nullable="false" />
+          <Property Name="agency_id" Type="Int32" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="agency" Relationship="Self.Relationship31" FromRole="application_agency" ToRole="agency" />
+          <NavigationProperty Name="application" Relationship="Self.Relationship30" FromRole="application_agency" ToRole="application" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="agency_id" Type="Int32" Nullable="false" />
+          <Property Name="category_name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="agency" Relationship="Self.category_agency" FromRole="category" ToRole="agency" />
+          <NavigationProperty Name="category_service" Relationship="Self.Relationship15" FromRole="category" ToRole="category_service" />
+          <NavigationProperty Name="category_location" Relationship="Self.Relationship19" FromRole="category" ToRole="category_location" />
+          <NavigationProperty Name="category_news" Relationship="Self.Relationship21" FromRole="category" ToRole="category_news" />
+          <NavigationProperty Name="sub_category" Relationship="Self.sub_category_category" FromRole="category" ToRole="sub_category" />
+        </EntityType>
+        <EntityType Name="category_location">
+          <Key>
+            <PropertyRef Name="category_location_id" />
+          </Key>
+          <Property Name="category_location_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="location_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="sub_category_id" Type="Int32" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="category" Relationship="Self.Relationship19" FromRole="category_location" ToRole="category" />
+          <NavigationProperty Name="sub_category" Relationship="Self.Relationship20" FromRole="category_location" ToRole="sub_category" />
+          <NavigationProperty Name="location" Relationship="Self.Relationship23" FromRole="category_location" ToRole="location" />
+        </EntityType>
+        <EntityType Name="category_news">
+          <Key>
+            <PropertyRef Name="category_news_id" />
+          </Key>
+          <Property Name="category_news_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="news_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="sub_category_id" Type="Int32" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="category" Relationship="Self.Relationship21" FromRole="category_news" ToRole="category" />
+          <NavigationProperty Name="sub_category" Relationship="Self.Relationship22" FromRole="category_news" ToRole="sub_category" />
+          <NavigationProperty Name="news" Relationship="Self.Relationship24" FromRole="category_news" ToRole="news" />
+        </EntityType>
+        <EntityType Name="category_service">
+          <Key>
+            <PropertyRef Name="category_service_id" />
+          </Key>
+          <Property Name="category_service_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="service_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="sub_category_id" Type="Int32" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="category" Relationship="Self.Relationship15" FromRole="category_service" ToRole="category" />
+          <NavigationProperty Name="sub_category" Relationship="Self.Relationship16" FromRole="category_service" ToRole="sub_category" />
+          <NavigationProperty Name="service" Relationship="Self.Relationship17" FromRole="category_service" ToRole="service" />
+        </EntityType>
+        <EntityType Name="language">
+          <Key>
+            <PropertyRef Name="language_id" />
+          </Key>
+          <Property Name="language_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="language_short" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="language_name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="news" Relationship="Self.Relationship25" FromRole="language" ToRole="news" />
+          <NavigationProperty Name="services" Relationship="Self.Relationship26" FromRole="language" ToRole="service" />
+          <NavigationProperty Name="locations" Relationship="Self.Relationship27" FromRole="language" ToRole="location" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="agency_id" Type="Int32" />
+          <Property Name="language_id" Type="Int32" Nullable="false" />
+          <Property Name="location_name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="zip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="latitude" Type="Double" />
+          <Property Name="longitude" Type="Double" />
+          <Property Name="website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="agency" Relationship="Self.location_agency" FromRole="location" ToRole="agency" />
+          <NavigationProperty Name="category_location" Relationship="Self.Relationship23" FromRole="location" ToRole="category_location" />
+          <NavigationProperty Name="language" Relationship="Self.Relationship27" FromRole="location" ToRole="language" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="news_id" />
+          </Key>
+          <Property Name="news_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="agency_id" Type="Int32" Nullable="false" />
+          <Property Name="language_id" Type="Int32" Nullable="false" />
+          <Property Name="news_title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="news_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="news_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="publish_date" Type="DateTime" Precision="3" />
+          <Property Name="archive_flag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="agency" Relationship="Self.news_agency" FromRole="news" ToRole="agency" />
+          <NavigationProperty Name="category_news" Relationship="Self.Relationship24" FromRole="news" ToRole="category_news" />
+          <NavigationProperty Name="language" Relationship="Self.Relationship25" FromRole="news" ToRole="language" />
+        </EntityType>
+        <EntityType Name="service">
+          <Key>
+            <PropertyRef Name="service_id" />
+          </Key>
+          <Property Name="service_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="agency_id" Type="Int32" />
+          <Property Name="language_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="service_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="agency" Relationship="Self.Relationship18" FromRole="service" ToRole="agency" />
+          <NavigationProperty Name="category_service" Relationship="Self.Relationship17" FromRole="service" ToRole="category_service" />
+          <NavigationProperty Name="language" Relationship="Self.Relationship26" FromRole="service" ToRole="language" />
+          <NavigationProperty Name="service_icon" Relationship="Self.Relationship33" FromRole="service" ToRole="service_icon" />
+        </EntityType>
+        <EntityType Name="service_icon">
+          <Key>
+            <PropertyRef Name="service_icon_id" />
+          </Key>
+          <Property Name="service_icon_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="service_id" Type="Int32" Nullable="false" />
+          <Property Name="service_image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="service" Relationship="Self.Relationship33" FromRole="service_icon" ToRole="service" />
+        </EntityType>
+        <EntityType Name="sub_category">
+          <Key>
+            <PropertyRef Name="sub_category_id" />
+          </Key>
+          <Property Name="sub_category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="sub_category_name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logical_delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="category" Relationship="Self.sub_category_category" FromRole="sub_category" ToRole="category" />
+          <NavigationProperty Name="category_location" Relationship="Self.Relationship20" FromRole="sub_category" ToRole="category_location" />
+          <NavigationProperty Name="category_news" Relationship="Self.Relationship22" FromRole="sub_category" ToRole="category_news" />
+          <NavigationProperty Name="category_service" Relationship="Self.Relationship16" FromRole="sub_category" ToRole="category_service" />
+        </EntityType>
+        <Association Name="category_agency">
+          <End Role="agency" Type="Self.agency" Multiplicity="1" />
+          <End Role="category" Type="Self.category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agency">
+              <PropertyRef Name="agency_id" />
+            </Principal>
+            <Dependent Role="category">
+              <PropertyRef Name="agency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="location_agency">
+          <End Role="agency" Type="Self.agency" Multiplicity="0..1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agency">
+              <PropertyRef Name="agency_id" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="agency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="news_agency">
+          <End Role="agency" Type="Self.agency" Multiplicity="1" />
+          <End Role="news" Type="Self.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agency">
+              <PropertyRef Name="agency_id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="agency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship18">
+          <End Role="agency" Type="Self.agency" Multiplicity="0..1" />
+          <End Role="service" Type="Self.service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agency">
+              <PropertyRef Name="agency_id" />
+            </Principal>
+            <Dependent Role="service">
+              <PropertyRef Name="agency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship31">
+          <End Role="agency" Type="Self.agency" Multiplicity="1" />
+          <End Role="application_agency" Type="Self.application_agency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agency">
+              <PropertyRef Name="agency_id" />
+            </Principal>
+            <Dependent Role="application_agency">
+              <PropertyRef Name="agency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship30">
+          <End Role="application" Type="Self.application" Multiplicity="1" />
+          <End Role="application_agency" Type="Self.application_agency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="application">
+              <PropertyRef Name="application_id" />
+            </Principal>
+            <Dependent Role="application_agency">
+              <PropertyRef Name="application_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship15">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="category_service" Type="Self.category_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="category_service">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship19">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="category_location" Type="Self.category_location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="category_location">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship21">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="category_news" Type="Self.category_news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="category_news">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="sub_category_category">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="sub_category" Type="Self.sub_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="sub_category">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship20">
+          <End Role="sub_category" Type="Self.sub_category" Multiplicity="0..1" />
+          <End Role="category_location" Type="Self.category_location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_category">
+              <PropertyRef Name="sub_category_id" />
+            </Principal>
+            <Dependent Role="category_location">
+              <PropertyRef Name="sub_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship23">
+          <End Role="location" Type="Self.location" Multiplicity="1" />
+          <End Role="category_location" Type="Self.category_location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="location">
+              <PropertyRef Name="location_id" />
+            </Principal>
+            <Dependent Role="category_location">
+              <PropertyRef Name="location_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship22">
+          <End Role="sub_category" Type="Self.sub_category" Multiplicity="0..1" />
+          <End Role="category_news" Type="Self.category_news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_category">
+              <PropertyRef Name="sub_category_id" />
+            </Principal>
+            <Dependent Role="category_news">
+              <PropertyRef Name="sub_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship24">
+          <End Role="news" Type="Self.news" Multiplicity="1" />
+          <End Role="category_news" Type="Self.category_news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="news">
+              <PropertyRef Name="news_id" />
+            </Principal>
+            <Dependent Role="category_news">
+              <PropertyRef Name="news_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship16">
+          <End Role="sub_category" Type="Self.sub_category" Multiplicity="0..1" />
+          <End Role="category_service" Type="Self.category_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_category">
+              <PropertyRef Name="sub_category_id" />
+            </Principal>
+            <Dependent Role="category_service">
+              <PropertyRef Name="sub_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship17">
+          <End Role="service" Type="Self.service" Multiplicity="1" />
+          <End Role="category_service" Type="Self.category_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="category_service">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship25">
+          <End Role="language" Type="Self.language" Multiplicity="1" />
+          <End Role="news" Type="Self.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="language_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship26">
+          <End Role="language" Type="Self.language" Multiplicity="1" />
+          <End Role="service" Type="Self.service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="service">
+              <PropertyRef Name="language_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship27">
+          <End Role="language" Type="Self.language" Multiplicity="1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="language_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship33">
+          <End Role="service" Type="Self.service" Multiplicity="1" />
+          <End Role="service_icon" Type="Self.service_icon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="service_icon">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ITS_MobileNewsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="agencies" EntityType="Self.agency" />
+          <EntitySet Name="applications" EntityType="Self.application" />
+          <EntitySet Name="application_agency" EntityType="Self.application_agency" />
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="category_location" EntityType="Self.category_location" />
+          <EntitySet Name="category_news" EntityType="Self.category_news" />
+          <EntitySet Name="category_service" EntityType="Self.category_service" />
+          <EntitySet Name="languages" EntityType="Self.language" />
+          <EntitySet Name="locations" EntityType="Self.location" />
+          <EntitySet Name="news" EntityType="Self.news" />
+          <EntitySet Name="services" EntityType="Self.service" />
+          <EntitySet Name="service_icon" EntityType="Self.service_icon" />
+          <EntitySet Name="sub_category" EntityType="Self.sub_category" />
+          <AssociationSet Name="category_agency" Association="Self.category_agency">
+            <End Role="agency" EntitySet="agencies" />
+            <End Role="category" EntitySet="categories" />
+          </AssociationSet>
+          <AssociationSet Name="location_agency" Association="Self.location_agency">
+            <End Role="agency" EntitySet="agencies" />
+            <End Role="location" EntitySet="locations" />
+          </AssociationSet>
+          <AssociationSet Name="news_agency" Association="Self.news_agency">
+            <End Role="agency" EntitySet="agencies" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship18" Association="Self.Relationship18">
+            <End Role="agency" EntitySet="agencies" />
+            <End Role="service" EntitySet="services" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship31" Association="Self.Relationship31">
+            <End Role="agency" EntitySet="agencies" />
+            <End Role="application_agency" EntitySet="application_agency" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship30" Association="Self.Relationship30">
+            <End Role="application" EntitySet="applications" />
+            <End Role="application_agency" EntitySet="application_agency" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship15" Association="Self.Relationship15">
+            <End Role="category" EntitySet="categories" />
+            <End Role="category_service" EntitySet="category_service" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship19" Association="Self.Relationship19">
+            <End Role="category" EntitySet="categories" />
+            <End Role="category_location" EntitySet="category_location" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship21" Association="Self.Relationship21">
+            <End Role="category" EntitySet="categories" />
+            <End Role="category_news" EntitySet="category_news" />
+          </AssociationSet>
+          <AssociationSet Name="sub_category_category" Association="Self.sub_category_category">
+            <End Role="category" EntitySet="categories" />
+            <End Role="sub_category" EntitySet="sub_category" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship20" Association="Self.Relationship20">
+            <End Role="sub_category" EntitySet="sub_category" />
+            <End Role="category_location" EntitySet="category_location" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship23" Association="Self.Relationship23">
+            <End Role="location" EntitySet="locations" />
+            <End Role="category_location" EntitySet="category_location" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship22" Association="Self.Relationship22">
+            <End Role="sub_category" EntitySet="sub_category" />
+            <End Role="category_news" EntitySet="category_news" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship24" Association="Self.Relationship24">
+            <End Role="news" EntitySet="news" />
+            <End Role="category_news" EntitySet="category_news" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship16" Association="Self.Relationship16">
+            <End Role="sub_category" EntitySet="sub_category" />
+            <End Role="category_service" EntitySet="category_service" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship17" Association="Self.Relationship17">
+            <End Role="service" EntitySet="services" />
+            <End Role="category_service" EntitySet="category_service" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship25" Association="Self.Relationship25">
+            <End Role="language" EntitySet="languages" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship26" Association="Self.Relationship26">
+            <End Role="language" EntitySet="languages" />
+            <End Role="service" EntitySet="services" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship27" Association="Self.Relationship27">
+            <End Role="language" EntitySet="languages" />
+            <End Role="location" EntitySet="locations" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship33" Association="Self.Relationship33">
+            <End Role="service" EntitySet="services" />
+            <End Role="service_icon" EntitySet="service_icon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ITS_MobileNewsModelStoreContainer" CdmEntityContainer="ITS_MobileNewsEntities">
+          <EntitySetMapping Name="agencies">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.agency">
+              <MappingFragment StoreEntitySet="agency">
+                <ScalarProperty Name="agency_id" ColumnName="agency_id" />
+                <ScalarProperty Name="agency_name" ColumnName="agency_name" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="applications">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.application">
+              <MappingFragment StoreEntitySet="application">
+                <ScalarProperty Name="application_id" ColumnName="application_id" />
+                <ScalarProperty Name="application_name" ColumnName="application_name" />
+                <ScalarProperty Name="mobile_app_id" ColumnName="mobile_app_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="application_agency">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.application_agency">
+              <MappingFragment StoreEntitySet="application_agency">
+                <ScalarProperty Name="application_agency_id" ColumnName="application_agency_id" />
+                <ScalarProperty Name="application_id" ColumnName="application_id" />
+                <ScalarProperty Name="agency_id" ColumnName="agency_id" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="agency_id" ColumnName="agency_id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_location">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.category_location">
+              <MappingFragment StoreEntitySet="category_location">
+                <ScalarProperty Name="category_location_id" ColumnName="category_location_id" />
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="sub_category_id" ColumnName="sub_category_id" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_news">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.category_news">
+              <MappingFragment StoreEntitySet="category_news">
+                <ScalarProperty Name="category_news_id" ColumnName="category_news_id" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="sub_category_id" ColumnName="sub_category_id" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_service">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.category_service">
+              <MappingFragment StoreEntitySet="category_service">
+                <ScalarProperty Name="category_service_id" ColumnName="category_service_id" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="sub_category_id" ColumnName="sub_category_id" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="languages">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.language">
+              <MappingFragment StoreEntitySet="language">
+                <ScalarProperty Name="language_id" ColumnName="language_id" />
+                <ScalarProperty Name="language_short" ColumnName="language_short" />
+                <ScalarProperty Name="language_name" ColumnName="language_name" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locations">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.location">
+              <MappingFragment StoreEntitySet="location">
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="agency_id" ColumnName="agency_id" />
+                <ScalarProperty Name="language_id" ColumnName="language_id" />
+                <ScalarProperty Name="location_name" ColumnName="location_name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="news">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.news">
+              <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="agency_id" ColumnName="agency_id" />
+                <ScalarProperty Name="language_id" ColumnName="language_id" />
+                <ScalarProperty Name="news_title" ColumnName="news_title" />
+                <ScalarProperty Name="news_content" ColumnName="news_content" />
+                <ScalarProperty Name="news_image" ColumnName="news_image" />
+                <ScalarProperty Name="publish_date" ColumnName="publish_date" />
+                <ScalarProperty Name="archive_flag" ColumnName="archive_flag" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="services">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.service">
+              <MappingFragment StoreEntitySet="service">
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="agency_id" ColumnName="agency_id" />
+                <ScalarProperty Name="language_id" ColumnName="language_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="service_content" ColumnName="service_content" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="service_icon">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.service_icon">
+              <MappingFragment StoreEntitySet="service_icon">
+                <ScalarProperty Name="service_icon_id" ColumnName="service_icon_id" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="service_image" ColumnName="service_image" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sub_category">
+            <EntityTypeMapping TypeName="ITS_MobileNewsModel.sub_category">
+              <MappingFragment StoreEntitySet="sub_category">
+                <ScalarProperty Name="sub_category_id" ColumnName="sub_category_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="sub_category_name" ColumnName="sub_category_name" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="logical_delete_date" ColumnName="logical_delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -42,6 +42,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,27 +52,87 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\agency.cs" />
-    <Compile Include="Entities\application.cs" />
-    <Compile Include="Entities\application_agency.cs" />
-    <Compile Include="Entities\category.cs" />
-    <Compile Include="Entities\category_location.cs" />
-    <Compile Include="Entities\category_news.cs" />
-    <Compile Include="Entities\category_service.cs" />
-    <Compile Include="Entities\ITS_MobileNewsDataModel.Context.cs" />
-    <Compile Include="Entities\ITS_MobileNewsDataModel.cs" />
-    <Compile Include="Entities\ITS_MobileNewsDataModel.Designer.cs" />
-    <Compile Include="Entities\language.cs" />
-    <Compile Include="Entities\location.cs" />
-    <Compile Include="Entities\news.cs" />
-    <Compile Include="Entities\service.cs" />
-    <Compile Include="Entities\service_icon.cs" />
-    <Compile Include="Entities\sub_category.cs" />
+    <Compile Include="Entities\agency.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\application.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\application_agency.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\category.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\category_location.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\category_news.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\category_service.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ITS_MobileNewsDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ITS_MobileNewsDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ITS_MobileNewsDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ITS_MobileNewsDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ITS_MobileNewsDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\language.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\location.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\news.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\service.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\service_icon.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\sub_category.cs">
+      <DependentUpon>ITS_MobileNewsDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Entities\ITS_MobileNewsDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ITS_MobileNewsDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\ITS_MobileNewsDataModel.edmx.diagram">
+      <DependentUpon>ITS_MobileNewsDataModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\ITS_MobileNewsDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ITS_MobileNewsDataModel.edmx</DependentUpon>
+      <LastGenOutput>ITS_MobileNewsDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\ITS_MobileNewsDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ITS_MobileNewsDataModel.edmx</DependentUpon>
+      <LastGenOutput>ITS_MobileNewsDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
