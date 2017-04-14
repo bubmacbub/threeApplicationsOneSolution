@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsAdminService", "MobileNewsAdminService\MobileNewsAdminService.csproj", "{168309D1-4A48-48C6-9B11-7EE27DB4D11B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsBusinessLogic", "..\MobileNewsServiceSolution\MobileNewsBusinessLogic\MobileNewsBusinessLogic.csproj", "{EDC18848-9757-4603-885D-05461E62CBA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsModel", "..\MobileNewsServiceSolution\MobileNewsModel\MobileNewsModel.csproj", "{0625754E-6EE2-496C-961B-ECED24F38EF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{168309D1-4A48-48C6-9B11-7EE27DB4D11B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{168309D1-4A48-48C6-9B11-7EE27DB4D11B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{168309D1-4A48-48C6-9B11-7EE27DB4D11B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC18848-9757-4603-885D-05461E62CBA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC18848-9757-4603-885D-05461E62CBA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC18848-9757-4603-885D-05461E62CBA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC18848-9757-4603-885D-05461E62CBA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0625754E-6EE2-496C-961B-ECED24F38EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0625754E-6EE2-496C-961B-ECED24F38EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0625754E-6EE2-496C-961B-ECED24F38EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0625754E-6EE2-496C-961B-ECED24F38EF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

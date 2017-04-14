@@ -19,6 +19,12 @@ namespace MobileNewsAdminService
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "ActionApi",
+                 routeTemplate: "admin/{controller}/{action}/{id}",
+                 defaults: new { id = RouteParameter.Optional }
+            );
         }
     }
 }
