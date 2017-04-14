@@ -120,12 +120,12 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\..\workspace\OFA\MobileNewsForOFA\MobileNewsBusinessLogic\MobileNewsBusinessLogic.csproj">
-      <Project>{504B36AA-DAB8-4EFE-B4DE-D2D54816B0E7}</Project>
+    <ProjectReference Include="..\MobileNewsBusinessLogic\MobileNewsBusinessLogic.csproj">
+      <Project>{edc18848-9757-4603-885d-05461e62cba0}</Project>
       <Name>MobileNewsBusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\..\workspace\OFA\MobileNewsForOFA\MobileNewsModel\MobileNewsModel.csproj">
-      <Project>{C47436B8-A69A-4057-9EF4-16B2461902ED}</Project>
+    <ProjectReference Include="..\MobileNewsModel\MobileNewsModel.csproj">
+      <Project>{0625754E-6EE2-496C-961B-ECED24F38EF1}</Project>
       <Name>MobileNewsModel</Name>
     </ProjectReference>
   </ItemGroup>

@@ -5,9 +5,9 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsService", "MobileNewsService\MobileNewsService.csproj", "{2022506B-5853-4755-BE27-5E57D2C0AFF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsBusinessLogic", "..\..\..\..\..\..\workspace\OFA\MobileNewsForOFA\MobileNewsBusinessLogic\MobileNewsBusinessLogic.csproj", "{504B36AA-DAB8-4EFE-B4DE-D2D54816B0E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsBusinessLogic", "MobileNewsBusinessLogic\MobileNewsBusinessLogic.csproj", "{EDC18848-9757-4603-885D-05461E62CBA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsModel", "..\..\..\..\..\..\workspace\OFA\MobileNewsForOFA\MobileNewsModel\MobileNewsModel.csproj", "{C47436B8-A69A-4057-9EF4-16B2461902ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsModel", "MobileNewsModel\MobileNewsModel.csproj", "{0625754E-6EE2-496C-961B-ECED24F38EF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{2022506B-5853-4755-BE27-5E57D2C0AFF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2022506B-5853-4755-BE27-5E57D2C0AFF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2022506B-5853-4755-BE27-5E57D2C0AFF4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{504B36AA-DAB8-4EFE-B4DE-D2D54816B0E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{504B36AA-DAB8-4EFE-B4DE-D2D54816B0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{504B36AA-DAB8-4EFE-B4DE-D2D54816B0E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{504B36AA-DAB8-4EFE-B4DE-D2D54816B0E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C47436B8-A69A-4057-9EF4-16B2461902ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C47436B8-A69A-4057-9EF4-16B2461902ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C47436B8-A69A-4057-9EF4-16B2461902ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C47436B8-A69A-4057-9EF4-16B2461902ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC18848-9757-4603-885D-05461E62CBA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC18848-9757-4603-885D-05461E62CBA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC18848-9757-4603-885D-05461E62CBA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC18848-9757-4603-885D-05461E62CBA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0625754E-6EE2-496C-961B-ECED24F38EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0625754E-6EE2-496C-961B-ECED24F38EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0625754E-6EE2-496C-961B-ECED24F38EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0625754E-6EE2-496C-961B-ECED24F38EF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
