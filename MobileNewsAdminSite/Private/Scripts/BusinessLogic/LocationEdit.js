@@ -1,0 +1,2 @@
+﻿//Use this for collecting data from the edit form, mainly controlling the submit button's event
+//Could also do some client side validation according to business rules if necesary.  OBVI must also have rules on server side as well

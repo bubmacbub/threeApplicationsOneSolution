@@ -1,0 +1,196 @@
+﻿<!--the parent controller of loading this should have an object ready to go for this html to get from.-->
+
+
+
+
+ <div class="form-horizontal">
+
+     <div class="form-group">
+         <label class="control-label col-md-2" for="locationAgencySelect">Agency:</label>
+         <div class="col-md-10">
+             <input class="form-control" id="locationAgencySelect" name="agencySelect"/>
+         </div>
+     </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationLanguageIdInput">Language:</label>
+        <div class="col-md-10">
+            <input class="form-control" id="locationLanguageIdInput" name="language_id"/>
+
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationNameInput">location_name</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationNameInput" name="location_name" type="text" value="">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationAddress">address</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationAddress" name="address" type="text" >
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationcityInput">city</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationcityInput" name="city" type="text" >
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationstateInput">state</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationstateInput" name="state" type="text" >
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationzipInput">zip</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationzipInput" name="zip" type="text" >
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationlatitudeInput">latitude</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationlatitudeInput" name="latitude" type="text">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationlongitudeInput">longitude</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationlongitudeInput" name="longitude" type="text" value="">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationwebsiteInput">website</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationwebsiteInput" name="website" type="text" value="">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationphoneInput">phone</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationphoneInput" name="locationphoneInput" type="text" value="">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationEmailInput">email</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationEmailInput" name="email" type="text" value="">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationCommentInput">comment</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationCommentInput" name="comment" type="text" value="">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationInputcreated_date">created_date</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationInputcreated_date" name="created_date" type="datetime" value="">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationInputmodified_date">modified_date</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationInputmodified_date" name="modified_date" type="datetime" value="">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="locationInputlogical_delete_date">logical_delete_date</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="locationInputlogical_delete_date" name="logical_delete_date" type="datetime" value="">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default">
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        // Handler for .ready() called.
+        //get the select for agencies set
+        console.log("Location Edit Form loaded");
+       
+            createAgencyDropDownList();
+            createLanguageDropDownList();
+        
+                createLocationCreateDP();
+                createLocationModifyDP();
+                createLocationLogDelDP();
+
+
+            function createLocationCreateDP()
+            {
+                $("#locationInputcreated_date").kendoDatePicker();
+            }
+
+            function createLocationModifyDP()
+            {
+                $("#locationInputmodified_date").kendoDatePicker();
+            }
+            function createLocationLogDelDP()
+            {
+                $("#locationInputlogical_delete_date").kendoDatePicker();
+            }
+
+        function createAgencyDropDownList() {
+            $("#locationAgencySelect").kendoDropDownList({
+                dataTextField: "agency_name",
+                dataValueField: "agency_id",
+                optionLabel: "Select an Agency",
+                dataSource: agencyDropDownDataSource
+            });
+        }
+
+        function createLanguageDropDownList()
+        {
+            $("#locationLanguageIdInput").kendoDropDownList({
+                dataTextField: "language_name",
+                dataValueField: "language_id",
+                optionLabel: "Select a Language",
+                dataSource: langaugeDropDownDataSource
+            });
+            
+        }
+        $("#locResult0")[0].click();
+    });
+
+
+
+
+</script>

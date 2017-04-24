@@ -9,7 +9,7 @@ using System.Web.Http.Description;
 
 namespace NYSOFA_api.AdminAPI
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:61182", headers: "*", methods: "*", SupportsCredentials = true)]
     public class AgencyController : ApiController
     {
         private ITS_MobileNewsEntities db = new ITS_MobileNewsEntities();
