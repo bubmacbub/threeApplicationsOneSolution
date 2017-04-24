@@ -6,10 +6,12 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 
 namespace NYSOFA_api.AdminAPI
 {
+    [EnableCors(origins: "http://localhost:57080", headers: "*", methods: "*", SupportsCredentials = true)]
     public class CategoryServiceController : ApiController
     {
         private ITS_MobileNewsEntities db = new ITS_MobileNewsEntities();
@@ -44,6 +46,9 @@ namespace NYSOFA_api.AdminAPI
         [HttpGet]
         public IEnumerable<category> CategoriesForService(int agencyId, int serviceId)
         {
+            System.Diagnostics.Debug.WriteLine("CategoriesForService webapi call");
+            System.Diagnostics.Debug.WriteLine(User.Identity.Name);
+            System.Diagnostics.Debug.WriteLine(RequestContext.Principal.Identity.Name);
             IEnumerable<category> cats;
             db.Configuration.LazyLoadingEnabled = false;
             CategoryFactory factory = new CategoryFactory(db);

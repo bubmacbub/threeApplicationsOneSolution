@@ -4,10 +4,12 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 
 namespace NYSOFA_api.AdminAPI
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ServiceController : ApiController
     {
         private ITS_MobileNewsEntities db = new ITS_MobileNewsEntities();
