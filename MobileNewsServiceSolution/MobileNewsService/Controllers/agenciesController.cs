@@ -13,14 +13,26 @@ namespace MobileNewsServices.Controllers
     public class agenciesController : ApiController
     {
         private ITS_MobileNewsEntities db = new ITS_MobileNewsEntities();
+        public agenciesController()
+        {
+            
+        }
+
+        public agenciesController(ITS_MobileNewsEntities context)
+        {
+            db = context;
+        }
 
         // GET: api/agencies
-        public IEnumerable<agencyViewModel> Getagencies(int aid, string rdate = null)
+        [ResponseType(typeof(IEnumerable<agencyViewModel>))]
+        public IHttpActionResult Getagencies(int aid = 1, string rdate = null)
         {
+            ApplicationAgencyFactory ApplicationAgencyFactory = new ApplicationAgencyFactory(db);
+            var agencyList = ApplicationAgencyFactory.GetAllApplicationsAgencyIds(aid);
             AgencyFactory agencyFactory = new AgencyFactory(db);
-            IEnumerable<agency> data = agencyFactory.Getagencies(aid, rdate);
-
-           List<agencyViewModel> listOfAgencies = new List<agencyViewModel>();
+            IEnumerable<agency> data = agencyFactory.Getagencies(agencyList, rdate);
+            if (data == null) { return NotFound(); }
+            List<agencyViewModel> listOfAgencies = new List<agencyViewModel>();
 
             foreach (var agency in data)
             {
@@ -32,8 +44,8 @@ namespace MobileNewsServices.Controllers
                 Agency.logical_delete_date = agency.logical_delete_date;
                 listOfAgencies.Add(Agency);
             }
-            IEnumerable<agencyViewModel> agencyList = listOfAgencies;
-            return agencyList;
+            IEnumerable<agencyViewModel> AgencyList = listOfAgencies;
+            return Ok(AgencyList);
         }
 
         // GET: api/agencies/5
@@ -126,6 +138,7 @@ namespace MobileNewsServices.Controllers
 
         private bool agencyExists(int id)
         {
+            ApplicationAgencyFactory ApplicationAgencyFactory = new ApplicationAgencyFactory(db);
             AgencyFactory agencyFactory = new AgencyFactory(db);
             agency a = agencyFactory.getAgency(id);
             bool returnValue = false;

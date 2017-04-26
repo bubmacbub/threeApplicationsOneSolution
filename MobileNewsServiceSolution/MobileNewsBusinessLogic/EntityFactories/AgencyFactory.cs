@@ -9,6 +9,7 @@ namespace MobileNewsBusinessLogic.Admin
     public class AgencyFactory
     {
         private ITS_MobileNewsEntities db = null;
+        private ApplicationAgencyFactory aaf = null;
         private AgencyFactory()
         {
 
@@ -19,18 +20,9 @@ namespace MobileNewsBusinessLogic.Admin
             db = dbCtxt;
         }
 
-        public IEnumerable<agency> Getagencies(int aid, string rdate = null)
+        public IEnumerable<agency> Getagencies(List<int> agency_id_list, string rdate = null)
         {
-            // aid now refers to APP_ID get list of agencies for app
-            DbRawSqlQuery<int> agIdList = db.Database.SqlQuery<int>("select distinct agency_id from application_agency where application_id = @p0", aid);
-            List<int> agency_id_list = new List<int>();
-            foreach (var agId in agIdList)
-            {
-                agency_id_list.Add(agId);
-            }
-
-
-
+            
             IQueryable<agency> data;
 
             //DateTime releaseDate = rdate ?? DateTime.MinValue;

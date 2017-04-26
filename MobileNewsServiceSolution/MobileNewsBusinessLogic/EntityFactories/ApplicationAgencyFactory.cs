@@ -34,14 +34,14 @@ namespace MobileNewsBusinessLogic.Admin
         {
             IQueryable<application_agency> data;
             //DateTime releaseDate = rdate ?? DateTime.MinValue;
-            if (rdate == null)// if no rdate was passed in return all undeleted records
+            if (rdate == null)// if no rdate was passed in return all records
             {
-                data = db.application_agency.Where(c => c.application_id == aid && c.logical_delete_date == null);
+                data = db.application_agency.Where(c => c.application_id == aid);
             }
             else // if rdate was passed in return all records on or after rdate
             {
                 var releaseDate = DateTime.Parse(rdate);
-                data = db.application_agency.Where(c => c.application_id == aid && c.modified_date >= releaseDate && c.logical_delete_date == null);
+                data = db.application_agency.Where(c => c.application_id == aid && c.modified_date >= releaseDate);
             }
 
             return data;
@@ -50,7 +50,7 @@ namespace MobileNewsBusinessLogic.Admin
         public List<int> GetAllApplicationsAgencyIds(int aid)
         {
             List<int> agencyList = new List<int>();
-            IQueryable<application_agency> Agencies = db.application_agency.Where(c => c.application_id == aid && c.logical_delete_date == null);
+            IQueryable<application_agency> Agencies = db.application_agency.Where(c => c.application_id == aid); // && c.logical_delete_date == null
             foreach (var agencyItem in Agencies)
             {
                 if (!agencyList.Contains(agencyItem.agency_id))

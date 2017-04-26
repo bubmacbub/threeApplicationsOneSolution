@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsService", "MobileNewsService\MobileNewsService.csproj", "{2022506B-5853-4755-BE27-5E57D2C0AFF4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsBusinessLogic", "MobileNewsBusinessLogic\MobileNewsBusinessLogic.csproj", "{EDC18848-9757-4603-885D-05461E62CBA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsModel", "MobileNewsModel\MobileNewsModel.csproj", "{0625754E-6EE2-496C-961B-ECED24F38EF1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5DDC524E-3BE7-4FEF-99A5-DBA070AA0175}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsServiceControllersTests", "MobileNewsServiceControllersTests\MobileNewsServiceControllersTests.csproj", "{F4FA4302-437D-43A5-A138-774309E680E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNewsFactoryTests", "MobileNewsFactoryTests\MobileNewsFactoryTests.csproj", "{BD6D4FA5-FB5A-4B53-9209-221F22F79684}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,14 @@ Global
 		{0625754E-6EE2-496C-961B-ECED24F38EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0625754E-6EE2-496C-961B-ECED24F38EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0625754E-6EE2-496C-961B-ECED24F38EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4FA4302-437D-43A5-A138-774309E680E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4FA4302-437D-43A5-A138-774309E680E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4FA4302-437D-43A5-A138-774309E680E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4FA4302-437D-43A5-A138-774309E680E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD6D4FA5-FB5A-4B53-9209-221F22F79684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD6D4FA5-FB5A-4B53-9209-221F22F79684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD6D4FA5-FB5A-4B53-9209-221F22F79684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD6D4FA5-FB5A-4B53-9209-221F22F79684}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

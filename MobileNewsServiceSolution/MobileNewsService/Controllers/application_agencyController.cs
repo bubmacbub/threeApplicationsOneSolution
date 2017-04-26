@@ -22,13 +22,14 @@ namespace MobileNewsServices.Controllers
         }
 
         // GET: api/application_agency
-        public IEnumerable<application_agencyViewModel> Getapplication_agency(int aid, string lang = "en", string rdate = null)
+        [ResponseType(typeof(IEnumerable<application_agencyViewModel>))]
+        public IHttpActionResult Getapplication_agency(int aid, string lang = "en", string rdate = null)
         {
             IEnumerable<application_agency> data;
             ApplicationAgencyFactory aaFactory = new ApplicationAgencyFactory(db);
             data = aaFactory.GetApplicationAgency(aid, lang, rdate);
             List<application_agencyViewModel> listOfAppAgencies = new List<application_agencyViewModel>();
-
+            if(data == null) { return NotFound(); }
             foreach (var appAgency in data)
             {
                 application_agencyViewModel app_agency = new application_agencyViewModel();
@@ -41,7 +42,7 @@ namespace MobileNewsServices.Controllers
                 listOfAppAgencies.Add(app_agency);
             }
             IEnumerable<application_agencyViewModel> AppAgencies = listOfAppAgencies;
-            return AppAgencies;
+            return Ok(AppAgencies);
         }
         [HttpGet]
         public List<int> AgencyIdList(int aid)
