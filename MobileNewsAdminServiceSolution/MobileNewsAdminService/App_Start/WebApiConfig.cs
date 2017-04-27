@@ -13,7 +13,8 @@ namespace MobileNewsAdminService
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-
+            //This config corresponds to the nuget package Microsoft.AspNet.WebApi.Cors
+            config.EnableCors();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

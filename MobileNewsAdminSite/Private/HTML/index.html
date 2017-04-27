@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>NYS OFA Mobile News Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Applicatoin for creating the content that the mobile app will display to users" />
+    <meta name="keywords" content="EBS, Mobile News, OFA, New York State" />
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <link rel="stylesheet" href="/SPA/Styles/main.css">
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Mobile News</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li id="HomeMenu" class="active"><a href="#Home">Home</a></li>
+                    <li id="AgenciesMenu"><a href="#Agencies">Agencies</a></li>
+                    <li id="ApplicationMenu"><a href="#Application">Application</a></li>
+                    <li id="CategoryMenu"><a href="#Category">Category</a></li>
+                    <li id="LocationMenu"><a href="#Location">Location</a></li>
+                    <li id="ServiceMenu"><a href="#Service">Service</a></li>
+                    <li id="NewsMenu"><a href="#News">News</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container-fluid theme-showcase" role="main">
+
+
+
+    <div class="row">
+        <div id="HomeContainer" class="col-lg-12"></div>
+    </div>
+        
+        <div id="AgenciesContainer"></div>
+        <div id="ApplicationContainer"></div>
+        <div id="CategoryContainer"></div>
+            <div id="LocationContainer"></div>
+
+            <div id="ServiceContainer"></div>
+            <div id="NewsContainer"></div>
+
+
+
+
+
+
+
+        </div> <!-- /container -->
+
+
+  
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- jQuery from goog
+    from bootstrap they reference 1.12
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+           
+            crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <!-- There might be a better place to call the google map api but it this is just the call to the loader.  
+        After this there are calls to authorizations and the actual API is then loaded, watch network traffic dev tools to verify this-->
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyCexZJ46m5GcNzhKqL_JLG_EizlHV_iQEk"></script>
+
+    <!--key=AIzaSyCexZJ46m5GcNzhKqL_JLG_EizlHV_iQEk-->
+
+
+
+    <script src="/SPA/Scripts/BusinessLogic/Agencies.js"></script>
+    <script src="/SPA/Scripts/BusinessLogic/Application.js"></script>
+    <script src="/SPA/Scripts/BusinessLogic/Category.js"></script>
+    <script src="/SPA/Scripts/BusinessLogic/Service.js"></script>
+    <script src="/SPA/Scripts/BusinessLogic/Location.js"></script>
+    <script src="/SPA/Scripts/BusinessLogic/News.js"></script>
+    <script src="/SPA/Scripts/BusinessLogic/Index.js"></script>
+    <!--<script src="/SPA/Scripts/kendo.core.min.js"></script>
+    <script src="/SPA/Scripts/kendo.multiselect.min.js"></script>-->
+
+    <script>
+    $( document ).ready(function() {
+        console.log("Main Index document loaded");
+        
+            //var url = "/SPA/Scripts/kendo.core.min.js";
+            //console.log("Going to get " + url);
+            //$.getScript(url, function () {
+            //    console.log("loaded kendo core");
+            //});
+            //console.log("Going to get kendo multiselect");
+            //$.getScript("/SPA/Scripts/kendo.multiselect.min.js", function () {
+            //    console.log("loaded kendo multiselect");
+            //});
+    });
+
+    $( window ).on( "load", function() {
+        console.log( "Main Index window loaded" );
+    });
+    </script>
+</body>
+</html>

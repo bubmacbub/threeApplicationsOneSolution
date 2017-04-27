@@ -1,0 +1,79 @@
+body {
+  padding-top: 50px;
+}
+
+.mapContainer
+{
+    height:40vh;
+}
+
+.locPane
+{
+    height:80vh;
+    overflow-y:scroll;
+}
+
+/*currently used as input area form service form*/
+body .modal-admin {
+    /* new custom width */
+    width: 60vw;
+    /* must be half of the width, minus scrollbar on the left (30px) */
+    margin-left: 20vw;
+    margin-top:5vw;
+}
+
+#srvCatLabelContainer .label
+{
+    margin-right:2px;
+}
+
+
+    /*@media only screen and (min-width : 768px) {
+    .is-table-row {
+        display: table;
+    }
+    .is-table-row [class*="col-"] {
+        float: none;
+        display: table-cell;
+        vertical-align: top;
+    }
+}*/
+
+/*.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+.row > [class*='col-'] {
+	 display: flex;
+	 flex-direction: column;
+}*/
+
+
+/*#locationListMainContainer
+{
+    position: absolute;
+}*/
+
+
+
+/*html, body, .container-fluid,#map_canvas {
+    height:100%;
+}
+.container-fluid {
+    width:100%;
+    position:absolute;
+    top:0;
+    padding:0;
+}
+#map_canvas {
+    border-top:50px solid #fff;
+    border-bottom:20px solid #fff;
+}
+header {
+    height:50px;
+}
+footer {
+    height:20px;
+}*/

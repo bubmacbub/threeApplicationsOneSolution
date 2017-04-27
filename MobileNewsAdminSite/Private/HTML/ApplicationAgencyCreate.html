@@ -1,0 +1,63 @@
+﻿<h2>Create</h2>
+
+
+<form action="/AdminApplication_agency/Create" method="post">
+    <input name="__RequestVerificationToken" type="hidden" value="zrdHgeAJjtgolsR6zMhPm4EwvZUi7Ety9VgtFjYvMKPb9FXtHjs9ZrMx3ITXyMWy4nLj9jRv7ZVEYXV1x4s1aPyP-eYoAUYFCt5AYy_vQyI1" />    <div class="form-horizontal">
+        <h4>application_agency</h4>
+        <hr />
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="application_id">application_id</label>
+            <div class="col-md-10">
+                <select class="form-control" id="application_id" name="application_id">
+                    <option value="2">test application</option>
+                    <option value="3">Another test application</option>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="agency_id">agency_id</label>
+            <div class="col-md-10">
+                <select class="form-control" id="agency_id" name="agency_id">
+                    <option value="1">NYSOFA</option>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="created_date">created_date</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="created_date" name="created_date" type="datetime" value="" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="modified_date">modified_date</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="modified_date" name="modified_date" type="datetime" value="" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="logical_delete_date">logical_delete_date</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="logical_delete_date" name="logical_delete_date" type="datetime" value="" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    <a href="/AdminApplication_agency">Back to List</a>
+</div>

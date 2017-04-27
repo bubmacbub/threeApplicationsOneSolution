@@ -1,0 +1,5 @@
+﻿.news-panel-body {
+
+  height: calc(300px);
+  overflow-y: auto; 
+}

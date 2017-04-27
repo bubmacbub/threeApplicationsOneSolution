@@ -1,0 +1,100 @@
+
+
+
+
+<div class="page-header">
+    <h1>Agency Services</h1>
+</div>
+<div id="serviceListMainContainer"></div>
+
+<div id="serviceEditFormModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-admin">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-md-2">
+                        <h3>Edit Service</h3>
+                    </div>
+                    <h3 class="col-md-8" id="srvCatLabelContainer"></h3>
+                    <div class="col-md-2">
+                        <button type="button" class="close closeb" data-dismiss="modal">X</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="svcagency_id">Agency:</label>
+                        <div class="col-md-10">
+                            <div id="products"></div>
+                            <input class="form-control" id="svcagency_id" name="agency_id" />
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="svclanguage_id">Language:</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="svclanguage_id" name="language_id">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="svctitle">title</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="svctitle" name="title" type="text" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="svcservice_content">service_content</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="svcservice_content" name="service_content" type="text" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="svccreated_date">created_date</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="svccreated_date" name="created_date" type="datetime" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="svcmodified_date">modified_date</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="svcmodified_date" name="modified_date" type="datetime" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="svclogical_delete_date">logical_delete_date</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="svclogical_delete_date" name="logical_delete_date" type="datetime" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn closeb" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../Private/Scripts/BusinessLogic/ServiceList.js"></script>
+
+
+

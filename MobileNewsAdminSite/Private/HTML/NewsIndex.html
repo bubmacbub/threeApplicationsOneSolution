@@ -1,0 +1,158 @@
+
+
+
+<div class="row">
+    <div class="col-sm-3">
+        <h2>Your Agency News</h2>
+    </div>
+    <div class="col-sm-1">
+        <button class="btn btn-default align-bottom" onclick="openCreateNewsModal()">
+            <span class="glyphicon glyphicon-plus"></span>Add News
+        </button>
+    </div>
+
+
+</div>
+<ul id="newsTabList" class="nav nav-tabs" role="tablist"></ul>
+<div id="newTabContent" class="tab-content">
+</div>
+<div id="mainNewsContainer">
+</div>
+
+
+
+
+
+<div id="newsEditFormModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-admin">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-md-2">
+                        <h3>Edit News</h3>
+                    </div>
+                    <h3 class="col-md-8" id="newsCatLabelContainer"></h3>
+                    <div class="col-md-2">
+                        <button type="button" class="close closeb" data-dismiss="modal">X</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="newsnewsagency_id">agency_id</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="newsnewsagency_id" name="agency_id" />
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="newslanguage_id">language_id</label>
+                        <div class="col-md-10">
+                            <input class="form-control" id="newslanguage_id" name="language_id" />
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="newsnews_title">news_title</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="newsnews_title" name="news_title" type="text" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="newsnews_content">news_content</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="newsnews_content" name="news_content" type="text" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="newsnews_image">news_image</label>
+                        <div class="col-md-10">
+                            <label class="btn btn-default btn-file">
+                                <input type="file" hidden id="news_image">
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="newspublish_date">publish_date</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="newspublish_date" name="publish_date" type="datetime" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="newsarchive_flag">archive_flag</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="newsarchive_flag" name="archive_flag" type="text" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="newscreated_date">created_date</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="newscreated_date" name="created_date" type="datetime" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="newsmodified_date">modified_date</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="newsmodified_date" name="modified_date" type="datetime" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="newslogical_delete_date">logical_delete_date</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="newslogical_delete_date" name="logical_delete_date" type="datetime" value="">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn closeb" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="newsCreateFormModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-admin">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-md-2">
+                        <h3>Create News</h3>
+                    </div>
+                    <h3 class="col-md-8" id="newsCatLabelContainer"></h3>
+                    <div class="col-md-2">
+                        <button type="button" class="close closeb" data-dismiss="modal">X</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" id="createNewsHtmlContainer">
+            </div>
+        </div>
+    </div>
+</div>
+                <script src="../../Private/Scripts/BusinessLogic/NewsList.js"></script>

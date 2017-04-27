@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h1>List of Agencies</h1>
+</div>
+<div class="row">
+<div id="dropDownOfAgencies" class="form-group">
+  <label for="agencySelect" class="control-label">Agency:</label>
+  <select name="agencySelect" id="agencySelect" class="form-control">
+    <option disabled selected>Please pick one</option>
+  </select>
+</div>
+</div>
+<div class="row">
+<div id="createAgencyButtonContainer">
+  <button class="btn btn-default" type="submit" onclick="loadCreateAgency();">Create Agency</button>
+</div>
+</div>
+
+
+
+<script>
+
+    $(function () {
+        console.log("Agency Index document loaded");
+
+        var url = "https://code.jquery.com/ui/1.12.1/jquery-ui.js";
+        console.log("Going to get " + url);
+        $.getScript(url, function () {
+            console.log("loaded jquery UI");
+            $.getScript("../../Private/Scripts/BusinessLogic/AgenciesList.js", function () {
+                console.log("loaded Agency List JS");
+                //findAllAgencies();
+            });
+        });
+
+    });
+
+</script>

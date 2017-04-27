@@ -1,0 +1,118 @@
+﻿
+
+<form action="" id="createNewsForm">
+    <!--<input name="__RequestVerificationToken" type="hidden" value="OKXDjuncVcxMvpyfXE5ofFv8KKADFJOl96hzFlDvpi4TK9rvp_rYQNkGMfl3By72y8pKi4JcpIMeCEWQbhU8RPRI98QHQ4uuN3wBgvMA3zw1" />-->    
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-2" for="agency_id">agency_id</label>
+            <div class="col-md-10">
+                <input class="form-control" id="createnewsagency_id" name="agency_id"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="createnewslanguage_id">language_id</label>
+            <div class="col-md-10">
+                <input class="form-control" id="createnewslanguage_id" name="language_id"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="news_title">news_title</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="createNews_title" name="news_title" type="text" value="" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="news_content">news_content</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="createnews_content" name="news_content" type="text" value="" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="createnews_image">news_image</label>
+            <div class="col-md-10">
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="createNewspublish_date">publish_date</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="createNewspublish_date" name="publish_date" type="datetime" value="" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="createNewsarchive_flag">archive_flag</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="createNewsarchive_flag" name="archive_flag" type="text" value="" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="createNewscreated_date">created_date</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="createNewscreated_date" name="created_date" type="datetime" value="" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="createNewsmodified_date">modified_date</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="createNewsmodified_date" name="modified_date" type="datetime" value="" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="createNewslogical_delete_date">logical_delete_date</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="createNewslogical_delete_date" name="logical_delete_date" type="datetime" value="" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Create" class="btn btn-default" id="createNewsButton" onclick="submitCreateNewsForm()"/>
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+</div>
+<script>
+    $(function () {
+        console.log("Create news Loaded");
+        
+        //make the drop downs from the datasources.  Might only need to do this if modal is shown but don't want to make it everytime it is shown.  maybe just refresh the ds
+        $("#createnewsagency_id").kendoDropDownList({
+            dataTextField: "agency_name",
+            dataValueField: "agency_id",
+            optionLabel: "Select an Agency",
+            dataSource: agencyDropDownDataSource,
+            change: onAgencyDropDownChange
+        });
+
+        $("#createnewslanguage_id").kendoDropDownList({
+            dataTextField: "language_name",
+            dataValueField: "language_id",
+            optionLabel: "Select a Language",
+            dataSource: langaugeDropDownDataSource
+        });
+
+        $("#createNewslogical_delete_date").kendoDatePicker();
+        $("#createNewsmodified_date").kendoDatePicker();
+        $("#createNewscreated_date").kendoDatePicker();
+        $("#createNewspublish_date").kendoDatePicker();
+    });
+</script>
