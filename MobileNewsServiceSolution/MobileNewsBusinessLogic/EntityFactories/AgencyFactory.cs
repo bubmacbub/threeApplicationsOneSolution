@@ -28,12 +28,12 @@ namespace MobileNewsBusinessLogic.Admin
             //DateTime releaseDate = rdate ?? DateTime.MinValue;
             if (rdate == null)// if no rdate was passed in return all undeleted records
             {
-                data = db.agencies.Where(c => agency_id_list.Contains(c.agency_id) && c.logical_delete_date == null);
+                data = db.agencies.Where(c => agency_id_list.Contains(c.agency_id) && c.logical_delete_date == null); // && c.logical_delete_date == null
             }
             else // if rdate was passed in return all records on or after rdate
             {
                 var releaseDate = DateTime.Parse(rdate);
-                data = db.agencies.Where(c => agency_id_list.Contains(c.agency_id) && c.modified_date >= releaseDate && c.logical_delete_date == null);
+                data = db.agencies.Where(c => agency_id_list.Contains(c.agency_id) && c.modified_date >= releaseDate);
             }
 
 

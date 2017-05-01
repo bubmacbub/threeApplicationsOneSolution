@@ -36,7 +36,8 @@ namespace MobileNewsServiceControllersTests
             mockSet.As<IQueryable<service>>().Setup(m => m.Expression).Returns(data.Expression);
             mockSet.As<IQueryable<service>>().Setup(m => m.ElementType).Returns(data.ElementType);
             mockSet.As<IQueryable<service>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
-
+            mockSet.Setup(m => m.Find(It.IsAny<int>()))
+                         .Returns<object[]>(ids => data.FirstOrDefault(y => (int)typeof(service).GetProperty("service_id").GetValue(y, null) == (int)ids[0]));
             List<application_agency> aaList = new List<application_agency>
             {
                 new application_agency { application_agency_id = 1, agency_id = 1, application_id = 2, created_date = new DateTime(2017,1,17,19,10,10), modified_date = new DateTime(2017,1,17,19,10,10), logical_delete_date = null},
@@ -50,12 +51,13 @@ namespace MobileNewsServiceControllersTests
             mockAaSet.As<IQueryable<application_agency>>().Setup(m => m.Expression).Returns(aaData.Expression);
             mockAaSet.As<IQueryable<application_agency>>().Setup(m => m.ElementType).Returns(aaData.ElementType);
             mockAaSet.As<IQueryable<application_agency>>().Setup(m => m.GetEnumerator()).Returns(aaData.GetEnumerator());
-
+            
             var mockContext = new Mock<ITS_MobileNewsEntities>();
             mockContext.Setup(c => c.services).Returns(mockSet.Object);
             mockContext.Setup(c => c.application_agency).Returns(mockAaSet.Object);
             controller = new servicesController(mockContext.Object);
         }
+
         //TESTS
 
         [TestMethod]

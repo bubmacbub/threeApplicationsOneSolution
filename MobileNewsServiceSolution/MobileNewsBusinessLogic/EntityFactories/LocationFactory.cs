@@ -60,6 +60,23 @@ namespace MobileNewsBusinessLogic.Admin
                     */
             return locations;
         }
+
+        public IEnumerable<location> FindLocationsByAgencyList(List<int> agencies, string rdate = null)
+        {
+            IEnumerable<location> locations = null;
+            if (rdate == null)
+            {
+                locations = dbCtxt.locations.Where(c => agencies.Contains(c.agency_id ?? 0) && c.logical_delete_date == null);
+            }
+            else
+            {
+                var releaseDate = System.DateTime.Parse(rdate);
+                locations = dbCtxt.locations.Where(c => agencies.Contains(c.agency_id ?? 0) && c.modified_date >= releaseDate);
+            }
+
+            return locations;
+        }
+
     }
 }
  

@@ -107,6 +107,7 @@
     <Compile Include="Controllers\category_newsController.cs" />
     <Compile Include="Controllers\category_serviceController.cs" />
     <Compile Include="Controllers\CommonActionController.cs" />
+    <Compile Include="Controllers\locationsController.cs" />
     <Compile Include="Controllers\newsController.cs" />
     <Compile Include="Controllers\servicesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -119,6 +120,7 @@
     <Compile Include="Models\category_newsViewModel.cs" />
     <Compile Include="Models\category_serviceViewModel.cs" />
     <Compile Include="Models\category_typeViewModel.cs" />
+    <Compile Include="Models\locationViewModel.cs" />
     <Compile Include="Models\newsViewModel.cs" />
     <Compile Include="Models\serviceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

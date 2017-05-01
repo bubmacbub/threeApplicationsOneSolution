@@ -32,12 +32,10 @@ namespace MobileNewsService.Controllers
             // aid now refers to APP_ID get list of agencies for app
             ApplicationAgencyFactory ApplicationAgencyFactory = new ApplicationAgencyFactory(db);
             List<int> agency_id_list = ApplicationAgencyFactory.GetAllApplicationsAgencyIds(aid);
-            ;
 
             NewsFactory newsfactory = new NewsFactory(db);
             IEnumerable<news> newsQryResult = newsfactory.FindNewsPerAgencyList(agency_id_list, rdate);
             
-             ;
             if (rdate == null)// if no rdate was passed in return all undeleted records
             {
                 newsQryResult = db.news.Where(c => agency_id_list.Contains(c.agency_id)).OrderByDescending(c => c.publish_date);

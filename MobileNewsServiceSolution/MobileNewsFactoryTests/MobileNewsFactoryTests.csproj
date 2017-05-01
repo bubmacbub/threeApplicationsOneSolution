@@ -71,7 +71,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="agencyFactoryTests.cs" />
     <Compile Include="applicationAgencyFactoryTests.cs" />
+    <Compile Include="locationFactoryTests.cs" />
     <Compile Include="newsFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="servicesFactoryTests.cs" />

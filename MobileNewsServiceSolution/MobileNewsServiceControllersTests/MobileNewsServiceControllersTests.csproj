@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="agenciesControllerTests2.cs" />
     <Compile Include="categoriesControllerTests.cs" />
+    <Compile Include="locationControllerTests.cs" />
     <Compile Include="newsControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="servicesControllerTests.cs" />

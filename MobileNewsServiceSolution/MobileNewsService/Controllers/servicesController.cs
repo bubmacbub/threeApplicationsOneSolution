@@ -73,13 +73,21 @@ namespace MobileNewsService.Controllers
         [ResponseType(typeof(service))]
         public IHttpActionResult Details(int id)
         {
-            service service = db.services.Find(id);
-            if (service == null)
-            {
-                return NotFound();
-            }
+            service service = db.services.Where(c => c.service_id == id && c.logical_delete_date == null).FirstOrDefault();
+            if (service == null){return NotFound();}
+            
+            serviceViewModel Service = new serviceViewModel();
 
-            return Ok(service);
+            Service.service_id = service.service_id;
+            Service.agency_id = service.agency_id;
+            Service.language_id = service.language_id;
+            Service.title = service.title;
+            Service.service_content = service.service_content;
+            Service.created_date = service.created_date;
+            Service.modified_date = service.modified_date;
+            Service.logical_delete_date = service.logical_delete_date;
+
+            return Ok(Service);
         }
 
         // PUT: api/services/5
