@@ -66,10 +66,13 @@ namespace MobileNewsBusinessLogic.Admin
             IEnumerable<location> locations = null;
             if (rdate == null)
             {
+                // If no date is passed in the app is initializing, do not send deleted records
                 locations = dbCtxt.locations.Where(c => agencies.Contains(c.agency_id ?? 0) && c.logical_delete_date == null);
             }
             else
             {
+                // If a date is passed in the app is updating, send all recent records, including deleted ones. 
+                // The app needs to know about recent deletions
                 var releaseDate = System.DateTime.Parse(rdate);
                 locations = dbCtxt.locations.Where(c => agencies.Contains(c.agency_id ?? 0) && c.modified_date >= releaseDate);
             }

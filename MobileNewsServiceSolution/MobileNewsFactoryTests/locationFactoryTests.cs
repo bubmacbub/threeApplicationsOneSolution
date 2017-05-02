@@ -65,6 +65,9 @@ namespace MobileNewsFactoryTests
         [TestMethod]
         public void FindLocationsByAgencyListReturnsAllUndeletedRecords()
         {
+            // If no date is passed in to FindLocationsByAgencyList the app is initializing, 
+            // do not send deleted records
+
             testFactorySetup();
             List<int> agencyList = new List<int> { 1, 2 };
             //var oldDate = new DateTime(2017, 1, 1, 1, 1, 1);
@@ -78,6 +81,10 @@ namespace MobileNewsFactoryTests
         [TestMethod]
         public void FindLocationsByAgencyListDoesNotReturnOldRecords()
         {
+            // If a date is passed in to FindLocationsByAgencyList the app is updating, 
+            // send all recent records, including deleted ones. 
+            // The app needs to know about recent deletions
+
             testFactorySetup();
             List<int> agencyList = new List<int> { 1, 2 };
             var currentDate = DateTime.Now;
@@ -86,5 +93,23 @@ namespace MobileNewsFactoryTests
             Assert.IsInstanceOfType(result, typeof(IEnumerable<location>));
             Assert.AreEqual(0, result.Count());
         }
+
+        [TestMethod]
+        public void FindLocationsByAgencyListDoesReturnRecentRecords()
+        {
+            // If a date is passed in to FindLocationsByAgencyList the app is updating, 
+            // send all recent records, including deleted ones. 
+            // The app needs to know about recent deletions.
+            // Here the date is old so all the records are recent.
+
+            testFactorySetup();
+            List<int> agencies = new List<int>() { 1, 2 };
+            var cutoffDate = new DateTime(2016, 1, 17, 19, 10, 10);
+            var dateString = cutoffDate.ToShortDateString();
+            var result = factory.FindLocationsByAgencyList(agencies, dateString);
+            Assert.IsInstanceOfType(result, typeof(IEnumerable<location>));
+            Assert.AreEqual(3, result.Count());
+        }
+
     }
 }

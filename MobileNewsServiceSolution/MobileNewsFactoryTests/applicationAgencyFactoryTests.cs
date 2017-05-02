@@ -47,5 +47,16 @@ namespace MobileNewsFactoryTests
             Assert.AreEqual(2, result.Count);
 
         }
+
+        [TestMethod]
+        public void GetAllApplicationsAgencyIdsReturnsEmptyList()
+        {
+            testFactorySetup();
+            var result = factory.GetAllApplicationsAgencyIds(5);
+            Assert.IsInstanceOfType(result, typeof(List<int>));
+            //var response = actionResult as OkNegotiatedContentResult<IEnumerable<newsViewModel>>;
+            Assert.AreEqual(0, result.Count);
+
+        }
     }
 }

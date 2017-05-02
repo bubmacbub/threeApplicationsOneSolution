@@ -37,12 +37,50 @@ namespace MobileNewsFactoryTests
         //TESTS
 
         [TestMethod]
-        public void FindNewsPerAgencyListFindsTwoArticles()
+        public void FindNewsPerAgencyListReturnsAllUndeletedRecords()
         {
+            // If NO date is passed in to FindNewsPerAgencyList the app is initializing, 
+            // do not send deleted records
+
             testFactorySetup();
             List<int> agencies = new List<int>() { 1, 2 };
             var result = factory.FindNewsPerAgencyList(agencies);
             Assert.IsInstanceOfType(result, typeof(IEnumerable<news>));
+            Assert.AreEqual(2, result.Count());
+        }
+
+        [TestMethod]
+        public void FindNewsPerAgencyListDoesNotReturnOldRecords()
+        {
+            // If a date is passed in to FindNewsPerAgencyList the app is updating, 
+            // send all recent records, including deleted ones. 
+            // The app needs to know about recent deletions. 
+            // Here the date is now so all records are old.
+
+            testFactorySetup();
+            List<int> agencies = new List<int>() { 1, 2 };
+            var currentDate = DateTime.Now;
+            var dateString = currentDate.ToShortDateString();
+            var result = factory.FindNewsPerAgencyList(agencies, dateString);
+            Assert.IsInstanceOfType(result, typeof(IEnumerable<news>));
+            Assert.AreEqual(0, result.Count());
+        }
+
+        [TestMethod]
+        public void FindNewsPerAgencyListDoesReturnRecentRecords()
+        {
+            // If a date is passed in to FindNewsPerAgencyList the app is updating, 
+            // send all recent records, including deleted ones. 
+            // The app needs to know about recent deletions.
+            // Here the date is old so all the records are recent.
+
+            testFactorySetup();
+            List<int> agencies = new List<int>() { 1, 2 };
+            var cutoffDate = new DateTime(2016, 1, 17, 19, 10, 10);
+            var dateString = cutoffDate.ToShortDateString();
+            var result = factory.FindNewsPerAgencyList(agencies, dateString);
+            Assert.IsInstanceOfType(result, typeof(IEnumerable<news>));
+            Assert.AreEqual(3, result.Count());
         }
     }
 }

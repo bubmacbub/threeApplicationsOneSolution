@@ -30,23 +30,8 @@ namespace MobileNewsFactoryTests
             mockSet.As<IQueryable<service>>().Setup(m => m.ElementType).Returns(data.ElementType);
             mockSet.As<IQueryable<service>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
 
-            List<application_agency> aaList = new List<application_agency>
-            {
-                new application_agency { application_agency_id = 1, agency_id = 1, application_id = 2, created_date = new DateTime(2017,1,17,19,10,10), modified_date = new DateTime(2017,1,17,19,10,10), logical_delete_date = null},
-                new application_agency { application_agency_id = 2, agency_id = 1, application_id = 3, created_date = new DateTime(2017,1,17,19,10,10), modified_date = new DateTime(2017,1,17,19,10,10), logical_delete_date = null},
-                new application_agency { application_agency_id = 3, agency_id = 2, application_id = 3, created_date = new DateTime(2017,1,17,19,10,10), modified_date = new DateTime(2017,1,17,19,10,10), logical_delete_date = null}
-            };
-            IQueryable<application_agency> aaData = aaList.AsQueryable();
-
-            var mockAaSet = new Mock<DbSet<application_agency>>();
-            mockAaSet.As<IQueryable<application_agency>>().Setup(m => m.Provider).Returns(aaData.Provider);
-            mockAaSet.As<IQueryable<application_agency>>().Setup(m => m.Expression).Returns(aaData.Expression);
-            mockAaSet.As<IQueryable<application_agency>>().Setup(m => m.ElementType).Returns(aaData.ElementType);
-            mockAaSet.As<IQueryable<application_agency>>().Setup(m => m.GetEnumerator()).Returns(aaData.GetEnumerator());
-
             var mockContext = new Mock<ITS_MobileNewsEntities>();
             mockContext.Setup(c => c.services).Returns(mockSet.Object);
-            mockContext.Setup(c => c.application_agency).Returns(mockAaSet.Object);
             factory = new ServiceFactory(mockContext.Object);
         }
         //TESTS
@@ -54,9 +39,46 @@ namespace MobileNewsFactoryTests
         [TestMethod]
         public void FindservicesPerAgencyIdListReturnsAllServices()
         {
+            // If NO date is passed in to FindservicesPerAgencyIdList the app is initializing, 
+            // do not send deleted records
+
             testFactorySetup();
             List<int> agencies = new List<int>() { 1, 2 };
             var result = factory.FindservicesPerAgencyIdList(agencies);
+            Assert.IsInstanceOfType(result, typeof(IEnumerable<service>));
+            Assert.AreEqual(2, result.Count());
+        }
+
+        [TestMethod]
+        public void FindservicesPerAgencyIdListDoesNotReturnOldRecords()
+        {
+            // If a date is passed in to FindNewsPerAgencyList the app is updating, 
+            // send all recent records, including deleted ones. 
+            // The app needs to know about recent deletions. 
+            // Here the date is now so all records are old.
+
+            testFactorySetup();
+            List<int> agencies = new List<int>() { 1, 2 };
+            var currentDate = DateTime.Now;
+            var dateString = currentDate.ToShortDateString();
+            var result = factory.FindservicesPerAgencyIdList(agencies, dateString);
+            Assert.IsInstanceOfType(result, typeof(IEnumerable<service>));
+            Assert.AreEqual(0, result.Count());
+        }
+
+        [TestMethod]
+        public void FindservicesPerAgencyIdListDoesReturnRecentRecords()
+        {
+            // If a date is passed in to FindNewsPerAgencyList the app is updating, 
+            // send all recent records, including deleted ones. 
+            // The app needs to know about recent deletions.
+            // Here the date is old so all the records are recent.
+
+            testFactorySetup();
+            List<int> agencies = new List<int>() { 1, 2 };
+            var cutoffDate = new DateTime(2016, 1, 17, 19, 10, 10);
+            var dateString = cutoffDate.ToShortDateString();
+            var result = factory.FindservicesPerAgencyIdList(agencies, dateString);
             Assert.IsInstanceOfType(result, typeof(IEnumerable<service>));
             Assert.AreEqual(3, result.Count());
         }

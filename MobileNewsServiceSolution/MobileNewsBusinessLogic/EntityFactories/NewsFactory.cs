@@ -29,14 +29,17 @@ namespace MobileNewsBusinessLogic.Admin
             IEnumerable<news> news;
                 if(rdate == null)
             {
-                //news = dbCtxt.news.Where(c => agency_id_list.Contains(c.agency_id)).OrderByDescending(c => c.publish_date);
-                news = dbCtxt.news;
+                // If no date is passed in the app is initializing, do not send deleted records
+
+                news = dbCtxt.news.Where(c => agency_id_list.Contains(c.agency_id) && c.logical_delete_date == null).OrderByDescending(c => c.publish_date);
             }
             else
             {
+                // If a date is passed in the app is updating, send all recent records, including deleted ones. 
+                // The app needs to know about recent deletions
+
                 var releaseDate = DateTime.Parse(rdate);
-                news = dbCtxt.news;
-                //news = dbCtxt.news.Where(c => agency_id_list.Contains(c.agency_id) && c.modified_date >= releaseDate).OrderByDescending(c => c.publish_date);
+                news = dbCtxt.news.Where(c => agency_id_list.Contains(c.agency_id) && c.modified_date >= releaseDate).OrderByDescending(c => c.publish_date);
             }
             
             return news;
