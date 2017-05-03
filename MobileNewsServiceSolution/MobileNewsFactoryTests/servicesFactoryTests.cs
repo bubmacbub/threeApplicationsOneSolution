@@ -81,6 +81,7 @@ namespace MobileNewsFactoryTests
             var result = factory.FindservicesPerAgencyIdList(agencies, dateString);
             Assert.IsInstanceOfType(result, typeof(IEnumerable<service>));
             Assert.AreEqual(3, result.Count());
+            Assert.AreEqual(result.ElementAt(0).title, "first service");
         }
     }
 }

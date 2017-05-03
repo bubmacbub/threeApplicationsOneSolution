@@ -28,23 +28,15 @@ namespace MobileNewsService.Controllers
 
         // GET: api/services?aid=1&lang=sp&rdate=2017-03-01
         [ResponseType(typeof(IEnumerable<serviceViewModel>))]
-        public IHttpActionResult Getservices(int aid, string lang = "en", DateTime? rdate = null)
+        public IHttpActionResult Getservices(int aid, string rdate = null, string lang = "en")
         {
             // aid now refers to APP_ID get list of agencies for app
             ApplicationAgencyFactory ApplicationAgencyFactory = new ApplicationAgencyFactory(db);
             List<int> agency_id_list = ApplicationAgencyFactory.GetAllApplicationsAgencyIds(aid);
 
+            ServiceFactory serviceFactory = new ServiceFactory(db);
 
-            IQueryable<service> serviceQryResult;
-            DateTime releaseDate = rdate ?? DateTime.MinValue;
-            if (releaseDate == DateTime.MinValue)// if no rdate was passed in return all undeleted records
-            {
-                serviceQryResult = db.services.Where(c => agency_id_list.Contains(c.agency_id ?? 0) && c.language.language_short == lang);
-            }
-            else // if rdate was passed in return all records on or after rdate
-            {
-                serviceQryResult = db.services.Where(c => agency_id_list.Contains(c.agency_id ?? 0) && c.language.language_short == lang && c.modified_date >= rdate);
-            }
+            IEnumerable<service> serviceQryResult = serviceFactory.FindservicesPerAgencyIdList(agency_id_list, rdate, lang);
 
             if (serviceQryResult == null) { return NotFound(); }
             List<serviceViewModel> listOfServices = new List<serviceViewModel>();

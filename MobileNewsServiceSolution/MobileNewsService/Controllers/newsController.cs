@@ -27,7 +27,7 @@ namespace MobileNewsService.Controllers
 
         // GET: api/news?aid=1
         [ResponseType(typeof(IEnumerable<newsViewModel>))]
-        public IHttpActionResult Getnews(int aid, string lang = "en", string rdate = null)
+        public IHttpActionResult Getnews(int aid, string rdate = null, string lang = "en")
         {
             // aid now refers to APP_ID get list of agencies for app
             ApplicationAgencyFactory ApplicationAgencyFactory = new ApplicationAgencyFactory(db);
@@ -35,19 +35,6 @@ namespace MobileNewsService.Controllers
 
             NewsFactory newsfactory = new NewsFactory(db);
             IEnumerable<news> newsQryResult = newsfactory.FindNewsPerAgencyList(agency_id_list, rdate);
-            
-            if (rdate == null)// if no rdate was passed in return all undeleted records
-            {
-                newsQryResult = db.news.Where(c => agency_id_list.Contains(c.agency_id)).OrderByDescending(c => c.publish_date);
-            }
-            else // if rdate was passed in return all records on or after rdate
-            {
-                DateTime releaseDate = DateTime.Parse(rdate);
-                newsQryResult = db.news.Where(c => agency_id_list.Contains(c.agency_id) && c.modified_date >= releaseDate).OrderByDescending(c => c.publish_date);
-            }
-            if (newsQryResult == null) { return NotFound(); }
-
-            var agency = aid;
             
             //newsQryResult = db.news;
             if(newsQryResult == null) { return NotFound(); }
@@ -58,11 +45,7 @@ namespace MobileNewsService.Controllers
                 newsViewModel News = new newsViewModel();
                 News.news_id = article.news_id;
                 News.agency_id = article.agency_id;
-                //News.language_id = article.language_id;
-                //News.archive_flag = article.archive_flag;
                 News.news_title = article.news_title;
-                //News.news_content = article.news_content;
-                //News.news_image = article.news_image;
                 News.publish_date = article.publish_date;
                 News.created_date = article.created_date;
                 News.modified_date = article.modified_date;

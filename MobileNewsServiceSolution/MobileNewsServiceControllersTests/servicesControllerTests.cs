@@ -61,10 +61,47 @@ namespace MobileNewsServiceControllersTests
         //TESTS
 
         [TestMethod]
-        public void GetGetservicesReturnsAllRecords_Test()
+        public void GetservicesReturnsAllUndeletedRecords()
         {
+            // If NO date is passed in to FindservicesPerAgencyIdList the app is initializing, 
+            // do not send deleted records
+
             testControllerSetup();
             var actionResult = controller.Getservices(3);
+            Assert.IsInstanceOfType(actionResult, typeof(OkNegotiatedContentResult<IEnumerable<serviceViewModel>>));
+            var response = actionResult as OkNegotiatedContentResult<IEnumerable<serviceViewModel>>;
+            Assert.AreEqual(2, response.Content.Count());
+        }
+
+        [TestMethod]
+        public void GetservicesDoesNotReturnOldRecords()
+        {
+            // If a date is passed in to FindNewsPerAgencyList the app is updating, 
+            // send all recent records, including deleted ones. 
+            // The app needs to know about recent deletions. 
+            // Here the date is now so all records are old.
+
+            testControllerSetup();
+            var currentDate = DateTime.Now;
+            var dateString = currentDate.ToShortDateString();
+            var actionResult = controller.Getservices(3, dateString);
+            Assert.IsInstanceOfType(actionResult, typeof(OkNegotiatedContentResult<IEnumerable<serviceViewModel>>));
+            var response = actionResult as OkNegotiatedContentResult<IEnumerable<serviceViewModel>>;
+            Assert.AreEqual(0, response.Content.Count());
+        }
+
+        [TestMethod]
+        public void GetservicesDoesReturnRecentRecords()
+        {
+            // If a date is passed in to FindNewsPerAgencyList the app is updating, 
+            // send all recent records, including deleted ones. 
+            // The app needs to know about recent deletions. 
+            // Here the date is old so all records are recent.
+
+            testControllerSetup();
+            var cutoffDate = new DateTime(2016, 1, 17, 19, 10, 10);
+            var dateString = cutoffDate.ToShortDateString();
+            var actionResult = controller.Getservices(3, dateString);
             Assert.IsInstanceOfType(actionResult, typeof(OkNegotiatedContentResult<IEnumerable<serviceViewModel>>));
             var response = actionResult as OkNegotiatedContentResult<IEnumerable<serviceViewModel>>;
             Assert.AreEqual(3, response.Content.Count());

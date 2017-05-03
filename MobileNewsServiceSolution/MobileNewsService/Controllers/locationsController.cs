@@ -28,7 +28,7 @@ namespace MobileNewsService.Controllers
         }
         // GET: api/locations
         [ResponseType(typeof(IEnumerable<locationViewModel>))]
-        public IHttpActionResult Getlocations(int aid, string lang = "en", string rdate = null)
+        public IHttpActionResult Getlocations(int aid, string rdate = null, string lang = "en")
         {
             // aid now refers to APP_ID get list of agencies for app
 

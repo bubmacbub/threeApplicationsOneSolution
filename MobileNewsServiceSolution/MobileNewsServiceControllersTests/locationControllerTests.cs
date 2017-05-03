@@ -57,12 +57,49 @@ namespace MobileNewsServiceControllersTests
         [TestMethod]
         public void GetlocationsReturnsAllRecords()
         {
+            // If NO date is passed in to FindservicesPerAgencyIdList the app is initializing, 
+            // do not send deleted records
+
             testControllerSetup();
             var actionResult = controller.Getlocations(3);
             Assert.IsInstanceOfType(actionResult, typeof(OkNegotiatedContentResult<IEnumerable<locationViewModel>>));
             var response = actionResult as OkNegotiatedContentResult<IEnumerable<locationViewModel>>;
             Assert.AreEqual(3, response.Content.Count());
 
+        }
+
+        [TestMethod]
+        public void GetlocationsDoesNotReturnOldRecords()
+        {
+            // If a date is passed in to Getlocations the app is updating, 
+            // send all recent records, including deleted ones. 
+            // The app needs to know about recent deletions. 
+            // Here the date is now so all records are old.
+
+            testControllerSetup();
+            var currentDate = DateTime.Now;
+            var dateString = currentDate.ToShortDateString();
+            var actionResult = controller.Getlocations(3, dateString);
+            Assert.IsInstanceOfType(actionResult, typeof(OkNegotiatedContentResult<IEnumerable<locationViewModel>>));
+            var response = actionResult as OkNegotiatedContentResult<IEnumerable<locationViewModel>>;
+            Assert.AreEqual(0, response.Content.Count());
+        }
+
+        [TestMethod]
+        public void GetlocationsDoesReturnRecentRecords()
+        {
+            // If a date is passed in to Getlocations the app is updating, 
+            // send all recent records, including deleted ones. 
+            // The app needs to know about recent deletions. 
+            // Here the date is old so all records are recent.
+
+            testControllerSetup();
+            var cutoffDate = new DateTime(2016, 1, 17, 19, 10, 10);
+            var dateString = cutoffDate.ToShortDateString();
+            var actionResult = controller.Getlocations(3, dateString);
+            Assert.IsInstanceOfType(actionResult, typeof(OkNegotiatedContentResult<IEnumerable<locationViewModel>>));
+            var response = actionResult as OkNegotiatedContentResult<IEnumerable<locationViewModel>>;
+            Assert.AreEqual(3, response.Content.Count());
         }
     }
 }
