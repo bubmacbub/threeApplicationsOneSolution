@@ -250,3 +250,7 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+###Fortify scan report, FPR,  and their compiled intermediate translated formatted files .NST
+*.fpr
+*.nst
